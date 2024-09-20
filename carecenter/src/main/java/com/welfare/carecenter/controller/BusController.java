@@ -21,6 +21,11 @@ public class BusController {
     @Autowired
     private BusService busService;
 
+    // 버스 리스트
+    @GetMapping("/bus-info")
+    public ResponseEntity<List<BusPickupInformation>> viewAllBusList(){
+        return ResponseEntity.ok(busService.viewAllBusList());
+    }
     // 버스 정보 추가
     @PostMapping("/bus-info")
     public ResponseEntity<BusPickupInformation> createBusInfo(@RequestBody BusPickupInformation vo){

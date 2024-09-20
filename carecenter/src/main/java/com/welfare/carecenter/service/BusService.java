@@ -19,6 +19,11 @@ public class BusService {
     @Autowired
     private BusPickupInformationDAO busPickupDAO;
 
+    // 버스 리스트
+    public List<BusPickupInformation> viewAllBusList(){
+        return busPickupDAO.findAll();
+    }
+
     //버스 정보 추가
     public BusPickupInformation createBusInfo(BusPickupInformation vo){
         return busPickupDAO.save(vo);

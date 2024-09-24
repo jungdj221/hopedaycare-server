@@ -44,6 +44,14 @@ public class BusService {
 
     }
 
+    // 버스 하나 보기
+    public BusPickupInformation viewOneBus (int busId){
+        if(busPickupDAO.existsById(busId)){
+            return busPickupDAO.findById(busId).orElse(null);
+        }
+        return null;
+    }
+
     // 버스 승객 명단
     public List<BusPassenger> viewAllPassengers(){
 

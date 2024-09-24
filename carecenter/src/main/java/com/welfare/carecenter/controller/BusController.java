@@ -43,6 +43,13 @@ public class BusController {
         return ResponseEntity.ok().build();
     }
 
+    // 버스 한개 보기
+    @GetMapping("/bus-info/{busId}")
+    public ResponseEntity<BusPickupInformation> viewOneBus(@PathVariable(name = "busId") int busId){
+        log.info("bus : " + busService.viewOneBus(busId));
+        return ResponseEntity.ok(busService.viewOneBus(busId));
+    }
+
     // 탑승객 명단 - 여기서의 busId 는 busNumber 을 뜻함.
     @GetMapping("/bus-passenger")
     public ResponseEntity<List<BusPassengerDTO>> viewAllPassengers(){

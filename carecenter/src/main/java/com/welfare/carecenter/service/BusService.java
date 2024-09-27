@@ -1,7 +1,9 @@
 package com.welfare.carecenter.service;
 
+import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.welfare.carecenter.domain.Bus.BusPassenger;
 import com.welfare.carecenter.domain.Bus.BusPickupInformation;
+import com.welfare.carecenter.domain.Bus.QBusPassenger;
 import com.welfare.carecenter.repo.Bus.BusPassengerDAO;
 import com.welfare.carecenter.repo.Bus.BusPickupInformationDAO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,10 @@ import java.util.List;
 @Service
 public class BusService {
 
+    @Autowired
+    private JPAQueryFactory jpaQueryFactory;
+
+    private final QBusPassenger qBusPassenger = QBusPassenger.busPassenger;
 
     @Autowired
     private BusPassengerDAO busPassengerDAO;
@@ -53,9 +59,10 @@ public class BusService {
     }
 
     // 버스 승객 명단
-    public List<BusPassenger> viewAllPassengers(){
-
-        return busPassengerDAO.findAll();
+    public List<BusPassenger> viewAllPassengers(int busId){
+        return jpaQueryFactory.selectFrom(qBusPassenger)
+                .where(qBusPassenger.busPickupInformation.busId.eq(busId))
+                .fetch();
     }
     // 버스 승객 추가
     public BusPassenger createPassenger(BusPassenger vo){

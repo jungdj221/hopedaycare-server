@@ -50,10 +50,10 @@ public class BusController {
         return ResponseEntity.ok(busService.viewOneBus(busId));
     }
 
-    // 탑승객 명단 - 여기서의 busId 는 busNumber 을 뜻함.
-    @GetMapping("/bus-passenger")
-    public ResponseEntity<List<BusPassengerDTO>> viewAllPassengers(){
-        List<BusPassenger> passengerList = busService.viewAllPassengers();
+    // 탑승객 명단 - 여기서의 가져오는 busId 는 busNumber 을 뜻함.
+    @GetMapping("/bus-passenger/{busId}")
+    public ResponseEntity<List<BusPassengerDTO>> viewAllPassengers(@PathVariable(name = "busId")int busId){
+        List<BusPassenger> passengerList = busService.viewAllPassengers(busId);
         List<BusPassengerDTO> response = new ArrayList<>();
         for(BusPassenger vo : passengerList){
             BusPassengerDTO req = BusPassengerDTO.builder()

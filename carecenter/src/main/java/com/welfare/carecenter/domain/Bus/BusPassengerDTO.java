@@ -14,6 +14,6 @@ public class BusPassengerDTO {
     private String busAvgTime;
     private String busPassengerName;
     private String busCallTiming;
-    private int busId; // 버스 아이디. 번호 아님
+    private BusPickupInformation busPickUp; // 버스 아이디. 번호 아님
     private String busStatus;  // 오전 , 오후 송영 여부
 }

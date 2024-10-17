@@ -40,4 +40,9 @@ public class BusPassenger {
     // 오전 , 오후 송영 여부 : char(2)
     @Column(name = "bus_status")
     private String busStatus;
+
+    // 버스 좌석 번호
+    @ManyToOne
+    @JoinColumn(name = "b_bus_seat_id", referencedColumnName = "bus_seat_id")
+    private BusSeats busSeats;
 }

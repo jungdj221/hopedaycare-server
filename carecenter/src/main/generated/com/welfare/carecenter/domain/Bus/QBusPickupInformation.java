@@ -19,6 +19,8 @@ public class QBusPickupInformation extends EntityPathBase<BusPickupInformation> 
 
     public static final QBusPickupInformation busPickupInformation = new QBusPickupInformation("busPickupInformation");
 
+    public final NumberPath<Integer> busColumn = createNumber("busColumn", Integer.class);
+
     public final StringPath busDriver = createString("busDriver");
 
     public final StringPath busHelper = createString("busHelper");
@@ -26,6 +28,8 @@ public class QBusPickupInformation extends EntityPathBase<BusPickupInformation> 
     public final NumberPath<Integer> busId = createNumber("busId", Integer.class);
 
     public final NumberPath<Integer> busNumber = createNumber("busNumber", Integer.class);
+
+    public final NumberPath<Integer> busRow = createNumber("busRow", Integer.class);
 
     public final StringPath busSubDriver = createString("busSubDriver");
 

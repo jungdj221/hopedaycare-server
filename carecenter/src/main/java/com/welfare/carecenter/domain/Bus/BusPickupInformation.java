@@ -37,4 +37,10 @@ public class BusPickupInformation {
 
     @Column(name = "bus_sub_helper")
     private String busSubHelper;
+
+    @Column(name = "bus_row")
+    private int busRow;
+
+    @Column(name = "bus_column")
+    private int busColumn;
 }

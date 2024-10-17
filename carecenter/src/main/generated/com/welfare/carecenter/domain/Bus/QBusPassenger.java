@@ -32,6 +32,8 @@ public class QBusPassenger extends EntityPathBase<BusPassenger> {
 
     public final QBusPickupInformation busPickupInformation;
 
+    public final QBusSeats busSeats;
+
     public final StringPath busStatus = createString("busStatus");
 
     public QBusPassenger(String variable) {
@@ -53,6 +55,7 @@ public class QBusPassenger extends EntityPathBase<BusPassenger> {
     public QBusPassenger(Class<? extends BusPassenger> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
         this.busPickupInformation = inits.isInitialized("busPickupInformation") ? new QBusPickupInformation(forProperty("busPickupInformation")) : null;
+        this.busSeats = inits.isInitialized("busSeats") ? new QBusSeats(forProperty("busSeats"), inits.get("busSeats")) : null;
     }
 
 }
